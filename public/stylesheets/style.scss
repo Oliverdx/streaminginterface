@@ -1,0 +1,557 @@
+$main-color: #FFF;
+$tab-border: #528a63;
+$back: #000;
+$mobilefont: 14px;
+
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  background: $back;
+  font-family: 'Nunito', sans-serif;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-width: none; //Remove Scrollbar from firefox
+}
+
+a {
+  text-decoration: none;
+  color: $main-color;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+
+#tvshow-overlaybg {
+  background: $back no-repeat center center / auto 100%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.tvshow-wrapper {
+  color: $main-color;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+}
+
+
+/* Body */
+
+#tvshow-body {
+  height: calc(100vh - 186px);
+  width: 100%;
+  background: no-repeat top right / cover;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: "";
+    width: 100%;
+    position: absolute;
+  }
+
+  &:before {
+    content: "";
+    height: 100%;
+    background: #000A;
+  }
+
+  &:after {
+    background: linear-gradient(to top, $back, transparent);
+    height: 150px;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .tvshow-header {
+    margin: 0 0 0 63px;
+    width: 396px;
+    height: 97px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+
+    #showTitle {
+      margin: 0;
+      font-size: 47px;
+      letter-spacing: 3px;
+    }
+
+    .show-desc {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+
+
+      .genre span {
+        margin: 0 5px;
+      }
+
+    }
+
+  }
+
+  .temp-wrapper {
+    width: 300px;
+    height: calc(100vh - 264px);
+    position: absolute;
+    top: 114px;
+    right: 54px;
+    z-index: 5;
+
+    .tabs-index {
+      position: absolute;
+      width: 100%;
+      top: -35px;
+    }
+
+    #episodeslist {
+      height: 90%;
+      overflow: scroll;
+
+      .tab-single {
+        flex-direction: column;
+
+        >div {
+          border-bottom: 2px solid #6a687569;
+        }
+
+        }
+
+        .ep-title {
+          display: flex;
+          align-items: center;
+          height: 50px;
+
+          h3 {
+            width: calc(100% - 50px);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: normal;
+          }
+
+          .playepisode {
+            width: 33px;
+            height: 33px;
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        #t1 > div:first-child {
+          .videothumb:after {
+            background: $tab-border;
+            width: 50px;
+          }
+
+      }
+    }
+
+    .epdesc {
+      height: 0;
+      overflow: hidden;
+
+      .videothumb {
+        width: 100%;
+        height: 0;
+        padding-top: 50%;
+        background: no-repeat top left / cover;
+        margin-bottom: 10px;
+        position: relative;
+
+        &:before,
+        &:after {
+          content: "";
+          height: 2px;
+          display: block;
+          position: absolute;
+          bottom: 10px;
+          left: 15px;
+        }
+
+        &:before {
+          width: 209px;
+          background: #FFF;
+        }
+
+      }
+    }
+
+    .showdesc {
+
+      .epdesc {
+        height: auto;
+        width: calc(100% - 58px);
+
+        .synopsis {
+          font-size: 13px;
+          margin-bottom: 20px;
+        }
+
+      }
+
+    }
+
+  }
+}
+
+/* Tabs */
+
+.tabs-index {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #6a6875;
+  height: 35px;
+
+  span {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #FFF;
+    position: relative;
+    margin-right: 32px;
+    height: 100%;
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 0 9px;
+    line-height: 38px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.active:after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      display: block;
+      background: $tab-border;
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+    }
+
+  }
+}
+
+.tabs-content {
+
+  .tab-single {
+    display: none;
+
+    &.active {
+      display: flex;
+    }
+  }
+
+}
+
+/* Footer - General, Cast, Sinopse.... */
+
+.tvshow-footer {
+  width: 100%;
+  height: 186px;
+  background: linear-gradient(to right, #13171a, #000);
+  float: right;
+  padding: 33px 54px 0;
+
+  .tabs-index {
+    position: relative;
+
+    &:after {
+      content: "";
+      width: 40px;
+      height: 0;
+      padding-top: 4%;
+      background: url(/images/logo-telecine.svg) no-repeat center center / 88%;
+      position: absolute;
+      right: 4px;
+      bottom: 2px;
+    }
+
+  }
+
+  .tabs-content {
+    height: calc(100% - 40px);
+
+    .tab-single {
+      height: 100%;
+
+      p,
+      a {
+        font-size: 13px;
+      }
+
+    }
+  }
+
+  .cast-tab {
+    align-items: center;
+
+    a {
+      display: block;
+      margin: 15px 5px;
+      padding: 23px 0;
+      width: 186px;
+      text-align: center;
+      background: #212123;
+      transition: ease all 300ms;
+
+        &:hover{
+          background: #929296;
+          color: #212123;
+        }
+
+      }
+
+      a:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .prizes-tab p {
+    margin: 15px;
+  }
+
+.general-tab {
+  align-items: center;
+  justify-content: space-between;
+
+  .synopsis {
+    width: calc(100% - 350px);
+    height: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 0;
+
+    h3 {
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: 16px;
+    }
+
+  }
+
+  .buttons {
+    width: 350px;
+    height: 95px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 0;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-bottom: 10px;
+      }
+
+      span {
+        font-size: 13px;
+      }
+
+    }
+
+  }
+}
+
+@media only screen and (max-width: 1019px) {
+  #tvshow-body .temp-wrapper {
+    top: 150px;
+    height: calc(100% - 200px);
+  }
+
+
+  .general-tab {
+    .synopsis {
+      width: 60%;
+      padding: 5px;
+    }
+
+    .buttons {
+      width: 40%;
+      display: grid;
+      grid-template-columns: 50% 50%;
+
+      a {
+        display: grid;
+        grid-template-columns: 34px auto;
+        justify-content: flex-start;
+
+        span {
+          text-align: center;
+          padding-left: 10px
+        }
+
+      }
+    }
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  #tvshow-body {
+    height: calc(100vh - 200px);
+
+    .temp-wrapper {
+      width: 90%;
+      position: inherit;
+      right: initial;
+      top: initial;
+      margin: 80px auto 0;
+    }
+
+    .tvshow-header {
+      margin: 0 auto;
+    }
+
+  }
+
+  #footer-tab {
+    display: flex;
+    justify-content: space-around;
+
+    span {
+      margin: 0;
+    }
+
+  }
+
+  .general-tab {
+    flex-direction: column-reverse;
+    padding-top: 10px;
+
+    .buttons,
+    .synopsis {
+      height: auto;
+      width: 100%;
+    }
+
+    .buttons {
+      grid-template-columns: repeat(4, 20%);
+      grid-template-rows: 50px;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        display: block;
+
+        svg {
+          margin: 0 auto;
+          display: block;
+        }
+
+        span {
+          display: none;
+        }
+
+      }
+
+    }
+
+  }
+
+  .tvshow-footer {
+    padding: 0 20px;
+    float: none;
+    height: 200px;
+    width: 100vw;
+    margin: 0;
+
+    .tabs-index:after {
+      display: none;
+    }
+
+  }
+
+  .cast-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      width: 100px;
+      padding: 12px 0;
+    }
+
+  }
+
+}
+
+@media only screen and (max-width: 479px) {
+
+  #tvshow-body {
+    background-position: center;
+
+    .temp-wrapper {
+      margin: 42px auto;
+    }
+
+    .tvshow-header #showTitle {
+      font-size: 35px;
+    }
+
+  }
+
+  #tvshow-body {
+
+    .tvshow-header {
+      width: 100%;
+      padding: 0 20px;
+
+      .show-desc {
+        font-size: 12px;
+      }
+
+    }
+
+    .temp-wrapper #episodeslist .tab-single .ep-title h3 {
+      font-size: $mobilefont;
+    }
+
+  }
+
+  .tvshow-footer .tabs-content .tab-single a,
+  .tvshow-footer .tabs-content .tab-single p {
+      font-size: 12px;
+      padding: 12px 0;
+  }
+
+  .tabs-index span {
+    font-size: $mobilefont;
+  }
+
+}
+
+/* Font Export */
+
+
+@font-face {
+  font-family: 'Nunito';
+  font-display: auto;
+  src: local('Nunito'), url('/fonts/Nunito-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

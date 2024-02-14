@@ -1,0 +1,313 @@
+/* Loading Animation */
+
+.loadspinning {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin-top: -125px;
+
+    div {
+        width: 2px;
+        height: 5%;
+        background: #000;
+        position: absolute;
+        animation: spingload 2s infinite;
+
+        &:first-child {
+            left: 50%;
+            top: 20%;
+        }
+
+        &:nth-of-type(2) {
+            left: 60%;
+            top: 22%;
+            transform: rotate(20deg);
+            animation-delay: 100ms;
+        }
+
+        &:nth-of-type(3) {
+            left: 68%;
+            top: 27%;
+            transform: rotate(38deg);
+            animation-delay: 200ms;
+        }
+
+        &:nth-of-type(4) {
+            left: 73%;
+            top: 33%;
+            transform: rotate(53deg);
+            animation-delay: 300ms;
+        }
+
+        &:nth-of-type(5) {
+            left: 77%;
+            top: 41%;
+            transform: rotate(71deg);
+            animation-delay: 400ms;
+        }
+
+        &:nth-of-type(6) {
+            left: 77%;
+            top: 51%;
+            transform: rotate(100deg);
+            animation-delay: 500ms;
+        }
+
+        &:nth-of-type(7) {
+            left: 74%;
+            top: 60%;
+            transform: rotate(119deg);
+            animation-delay: 600ms;
+        }
+
+        &:nth-of-type(8) {
+            left: 68%;
+            top: 68%;
+            transform: rotate(139deg);
+            animation-delay: 700ms;
+        }
+
+        &:nth-of-type(9) {
+            left: 60%;
+            top: 73%;
+            transform: rotate(157deg);
+            animation-delay: 800ms;
+        }
+
+        &:nth-of-type(10) {
+            left: 50%;
+            top: 75%;
+            animation-delay: 900ms;
+        }
+
+        &:nth-of-type(11) {
+            left: 39%;
+            top: 73%;
+            transform: rotate(-157deg);
+            animation-delay: 1000ms;
+        }
+
+        &:nth-of-type(12) {
+            left: 30%;
+            top: 67%;
+            transform: rotate(-139deg);
+            animation-delay: 1100ms;
+        }
+
+        &:nth-of-type(13) {
+            left: 24%;
+            top: 59%;
+            transform: rotate(-124deg);
+            animation-delay: 1200ms;
+        }
+
+        &:nth-of-type(14) {
+            left: 22%;
+            top: 49%;
+            transform: rotate(-96deg);
+            animation-delay: 1300ms;
+        }
+
+        &:nth-of-type(15) {
+            left: 23%;
+            top: 38%;
+            transform: rotate(-70deg);
+            animation-delay: 1400ms;
+        }
+
+        &:nth-of-type(16) {
+            left: 29%;
+            top: 29%;
+            transform: rotate(-55deg);
+            animation-delay: 1500ms;
+        }
+
+        &:nth-of-type(17) {
+            left: 38%;
+            top: 22%;
+            transform: rotate(-28deg);
+            animation-delay: 1600ms;
+        }
+    }
+}
+
+@-moz-keyframes spingload{
+  0%{
+    background: #000;
+  }50%{
+    background: #FFF;
+  }100%{
+    background: #000;
+  }
+}
+
+@keyframes spingload{
+  0%{
+    background: #000;
+  }50%{
+    background: #FFF;
+  }100%{
+    background: #000;
+  }
+}
+
+
+@-webkit-keyframes spingload{
+  0%{
+    background: #000;
+  }50%{
+    background: #FFF;
+  }100%{
+    background: #000;
+  }
+}
+
+
+/* App interface Animation */
+
+.rate:hover .smile {
+    transform: translate(0, 45px) rotate3d(1, 0, 0, 179deg);
+}
+
+.rate .smile {
+    transition: ease all 300ms;
+}
+
+.record:hover circle {
+    animation: blink infinite 800ms;
+}
+
+.share:hover .share-arrow {
+    animation: share forwards 1s;
+}
+
+.addlist:hover g g {
+    transform: translate(17px, 7px) rotate(45deg);
+}
+
+.addlist g g {
+    transition: ease all 300ms;
+}
+
+.addlist:hover path {
+    fill: #9b9b9b;
+}
+
+.addlist:hover rect {
+    stroke: black;
+}
+
+.rate:hover svg g {
+    fill: green;
+}
+
+.rate:hover svg .smile, .rate:hover svg circle {
+    fill: white;
+}
+
+@keyframes blink {
+    0% {
+        fill: #9B9B9B;
+    }
+
+    50% {
+        fill: red;
+    }
+
+    100% {
+        fill: #9B9B9B;
+    }
+}
+
+@-webkit-keyframes blink {
+    0% {
+        fill: #9B9B9B;
+    }
+
+    50% {
+        fill: red;
+    }
+
+    100% {
+        fill: #9B9B9B;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        fill: #9B9B9B;
+    }
+
+    50% {
+        fill: red;
+    }
+
+    100% {
+        fill: #9B9B9B;
+    }
+}
+
+
+@keyframes share {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(0, -24px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes share {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(0, -24px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes share {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(0, -24px);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
